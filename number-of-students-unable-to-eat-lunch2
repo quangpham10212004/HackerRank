@@ -1,0 +1,39 @@
+class Solution {
+public:
+    int countStudents(vector<int>& students, vector<int>& sandwiches) {
+        queue<int> q1, q2;
+        int n = students.size();
+        for(int i = 0; i < n; i++){
+           q2.push(sandwiches[i]);
+           q1.push(students[i]);
+        }
+        while(1){
+            if(q1.empty() || q2.empty()) 
+                break;
+            else if(q1.front() == q2.front()){
+                q1.pop();
+                q2.pop();
+            }
+            else{
+                int check = 0;
+                q1.push(q1.front());
+                q1.pop();
+                queue<int> tmp;
+                while(q1.size()){
+                    
+                    int top = q1.front();
+                    q1.pop();
+                    tmp.push(top);
+                    if(top == q2.front()) check ++;
+                }
+                while(!tmp.empty()){
+                    q1.push(tmp.front());
+                    tmp.pop();
+                }
+                if(check == 0) break;
+                else continue;
+            }
+        }
+        return q1.size();
+    }
+};
