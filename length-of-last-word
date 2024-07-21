@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        stringstream ss(s);
+        vector<string> v;
+        string tmp;
+        while(ss >> tmp){
+            v.push_back(tmp);
+        }
+        return v.back().size();
+    }
+    
+};

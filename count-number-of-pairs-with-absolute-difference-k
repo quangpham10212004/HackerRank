@@ -1,0 +1,18 @@
+class Solution(object):
+    def countKDifference(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        d=dict()
+        for i in nums:
+            if i in d:
+                d[i]+=1
+            else:
+                d[i]=1
+        c=0
+        for key, value in d.items():
+            if key + k in d:
+                c+=d[key]*d[key+k]
+        return c

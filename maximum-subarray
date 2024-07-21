@@ -1,0 +1,16 @@
+class Solution(object):
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        cur_max=0
+        maxFinal=-1e9
+        for i in nums:
+            cur_max+=i
+            if cur_max > maxFinal:
+                maxFinal=cur_max
+            if cur_max < 0:
+                cur_max=0    
+        return maxFinal
+        

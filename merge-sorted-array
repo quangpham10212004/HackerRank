@@ -1,0 +1,16 @@
+class Solution {
+public:
+
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int k=0;
+        for(int i = m;i < nums1.size(); i++){
+            nums1[m+k] = nums2[k];
+            k++;
+        }
+        sort(nums1.begin(),nums1.begin()+nums1.size());
+        for(auto it = nums1.begin(); it != nums1.end(); it++){
+            cout<<*it;
+        }
+    }
+
+};

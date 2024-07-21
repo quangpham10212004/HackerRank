@@ -1,0 +1,17 @@
+class Solution {
+public:
+    // int giaiThua(int n){
+    //     int gt =1;
+    //     for(int i = 1; i <=n ;i++){
+    //         gt*=i;
+    //     }
+    //     return gt;
+    // }
+    int countVowelStrings(int k) {
+        if(k < 0) return 0;
+        else if(k == 0) return 1;
+        else {
+            return (k+1)*(k+2)*(k+3)*(k+4)/24;
+        }
+    }
+};
