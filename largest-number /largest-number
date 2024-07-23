@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool static cmp(int a, int b){
+        string n = to_string(a), m =to_string(b);
+        return n+m > m+n;
+
+    }
+    string largestNumber(vector<int>& nums) {
+        sort(nums.begin(),nums.end(),cmp);
+        string ans="";
+        for(auto x:nums) ans+=to_string(x);
+        if(ans[0] =='0') return "0";
+        return ans;
+    }
+};
