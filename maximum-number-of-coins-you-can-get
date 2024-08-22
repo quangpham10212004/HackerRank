@@ -1,0 +1,30 @@
+// Version ko optimize :))))))))
+class Solution {
+public:
+    vector<vector<int>> pick(vector<int>& v){
+        int n = v.size();
+        int l = 0, r = n-1;
+        vector<vector<int>> trip;
+        while(l < r){
+            vector<int> tmp;
+            tmp.push_back(v[r]);
+            tmp.push_back(v[r-1]);
+            tmp.push_back(v[l]);
+            trip.push_back(tmp);
+            l+=1;
+            r-=2;
+        }
+        return trip;
+    }
+    int maxCoins(vector<int>& piles) {
+        int n = piles.size();
+        if(n == 3) return piles[1];
+        sort(piles.begin(), piles.end());
+        vector<vector<int>> gl = pick(piles);
+        int tong = 0;
+        for(auto x: gl){
+            tong+=x[1];
+        }
+        return tong;
+    }
+};
