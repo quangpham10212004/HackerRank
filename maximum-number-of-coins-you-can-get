@@ -1,4 +1,4 @@
-// Version ko optimize :))))))))
+// Version ko optimize :)))))))), ver optimize o duoi
 class Solution {
 public:
     vector<vector<int>> pick(vector<int>& v){
@@ -26,5 +26,18 @@ public:
             tong+=x[1];
         }
         return tong;
+    }
+};
+
+//version toi uu
+class Solution {
+public:
+    int maxCoins(vector<int>& piles) 
+    {
+        sort(rbegin(piles), rend(piles));
+        int ans = 0, i = 1, n = piles.size();
+        while(i <= n - (n/3))
+            ans += piles[i], i += 2;
+        return ans;
     }
 };
