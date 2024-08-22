@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<vector<int>> sortTheStudents(vector<vector<int>>& score, int k) {
+        vector<pair<int, vector<int>>> exam;
+
+
+        for(auto it : score){
+            exam.push_back({it[k], it});
+
+        }
+        vector<vector<int>> ans;
+        sort(exam.begin(),exam.end());
+        for(int i = exam.size() - 1; i >=0;i--){
+            ans.push_back(exam[i].second);
+        }
+        return ans;
+    }
+};
