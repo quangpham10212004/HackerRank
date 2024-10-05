@@ -1,0 +1,45 @@
+class Solution {
+    public String hasZero(int [] nums){
+        int cnt  = 0;
+        int j =0;
+        for(int i = 0 ; i < nums.length;i++){
+            if(nums[i] == 0) {
+                cnt++;
+                j = i;
+            }
+        }
+        if(cnt == 0) return "Z";
+        if(cnt == 1) return String.valueOf(j);
+        return "M";
+    }
+    public int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] prefix = new int[n];
+        String zero = hasZero(nums);
+        if(zero == "M") return new int[n];
+        if(zero == "Z"){
+            int tmp = 1;
+            for(int i = 1 ;i < n;i++){
+                tmp*=nums[i];
+            }
+            prefix[0] =tmp;
+            for(int i = 1; i < n;i++){
+                prefix[i] = prefix[i-1] * nums[i-1]/nums[i];
+            }
+        }
+        else{
+            String ind = hasZero(nums);
+            int j = Integer.parseInt(ind);
+            int mul = 1;
+            for(int i = 0 ; i < n;i++){
+                if(i != j){
+                    mul*=nums[i];
+                }
+            }
+            nums = new int[n];
+            nums[j] = mul;
+            return nums;
+        }
+        return prefix;
+    }
+}
