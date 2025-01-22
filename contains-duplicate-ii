@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+        unordered_set<int> window;// sliding window
+        int it = 0;                 // Iterator
+        for(int i = 0 ;i < nums.size();i++){
+            if(i - it > k){         // remove the oldest element if distance > k
+                window.erase(nums[it]);
+                it++;
+            }
+            if(window.find(nums[i]) != window.end()){ // check if the nums[i] has already exist in the window
+                return true;        // found duplicate number
+            }
+            window.insert(nums[i]);    // add nums[i] because it has not exist in the window
+        }
+        return false;
+    }
+};
+
+/*  i != j numi == numj and abs(i-j) <=k
+    1 0 1 1
+    
+
+
+*/
