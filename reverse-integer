@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int reverse(int x) {
+        string num = to_string (x);
+        int left = 0, right = num.size() - 1;
+        bool neg = false;
+        if(num[0] == '-'){
+            left = 1;
+            neg = true;
+        }
+        while(left < right){
+            swap(num[left], num[right]);
+            left++;
+            right--;
+        }
+        long long res = stoll(num);
+        if(res > INT_MAX || res < INT_MIN){
+            return 0;
+        }
+        return res;
+    }
+};
